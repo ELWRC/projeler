@@ -1,53 +1,43 @@
-# Berat Bedirhan Barbaros
+# Projects & Experiments
 
-**IT Support • Full-Stack Development • Cybersecurity / DevSecOps**
+A curated collection of small software experiments, learning projects and prototypes by **Berat Bedirhan Barbaros**.
 
-I am a Computer Programming student and IT professional focused on building practical software systems, improving infrastructure knowledge, and progressing toward a career in software engineering and application security.
+My main areas of focus are **full-stack development, mobile applications, IT systems and cybersecurity / DevSecOps**.
 
-## About Me
+## Projects
 
-- Working in **IT / technical support** with hands-on experience in systems, networking, devices, Windows environments, and user support.
-- Building web and mobile applications with **TypeScript, React, Next.js, Node.js, Prisma, PostgreSQL, Expo and React Native**.
-- Developing deeper expertise in **cybersecurity, application security and DevSecOps**.
-- Interested in **AI systems, local AI, automation and robotics**.
-- Long-term goal: combine **software engineering + cybersecurity** to build secure, production-grade systems.
+| Project | Description | Stack |
+|---|---|---|
+| [NightQueen Stopwatch](projects/nightqueen-stopwatch/) | Neon-themed stopwatch with basic PWA support and offline app-shell caching. | HTML, CSS, JavaScript, PWA |
+| [Python Heart Animation](projects/python-heart-animation/) | Turtle graphics experiment based on parametric heart equations. | Python, Turtle |
 
-## Tech Stack
+## Technical Focus
 
-### Languages
-`TypeScript` `JavaScript` `Python` `SQL` `HTML` `CSS`
+- TypeScript, JavaScript and Python
+- React, Next.js and Node.js
+- React Native and Expo
+- REST APIs, Prisma and PostgreSQL
+- Windows, networking and IT support
+- Application Security and DevSecOps
+- AI systems, automation and robotics
 
-### Web & Backend
-`Next.js` `React` `Node.js` `REST APIs` `Prisma` `PostgreSQL`
+## Repository Structure
 
-### Mobile
-`React Native` `Expo`
+```text
+projects/
+├── nightqueen-stopwatch/
+│   ├── index.html
+│   ├── manifest.json
+│   ├── sw.js
+│   └── README.md
+└── python-heart-animation/
+    ├── heart_animation.py
+    └── README.md
+```
 
-### Tools & Infrastructure
-`Git` `GitHub` `Windows` `Active Directory` `Networking` `Remote Support`
+## About
 
-### Currently Learning
-`Application Security` `DevSecOps` `Cloud` `AI Systems`
-
-## Current Focus
-
-- Full-stack application architecture
-- Secure backend/API development
-- React Native & Expo mobile development
-- Networking and system administration
-- AI-assisted automation
-- Cybersecurity and secure software engineering
-
-## Projects & Interests
-
-- **RentRadar** — multi-company car rental comparison platform concept
-- **Rent-a-Car Automation** — reservation and management workflow
-- **Arya** — local-first AI assistant / robotics concept
-- **Mobile apps** — React Native / Expo projects focused on practical product ideas
-
-## GitHub
-
-This repository is used as a collection point for experiments, learning projects and software work as I continue improving my engineering stack.
+This repository is intentionally kept as a collection of smaller experiments. Larger applications and production-oriented projects are maintained separately as their own repositories.
 
 ---
 
