@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Neon temalı, PWA destekli basit kronometre uygulaması." />
+  <title>NightQueenBG Kronometre</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#b300ff" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle at 50% 50%, #2b0049 0%, #0a0013 80%);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    h1 {
+      font-size: 3em;
+      background: linear-gradient(90deg, #ff00ff, #b266ff);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 10px #ff33ff, 0 0 20px #b266ff;
+      animation: glow 3s linear infinite;
+      margin-bottom: 40px;
+    }
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 10px #ff33ff, 0 0 30px #b266ff; }
+      50% { text-shadow: 0 0 20px #ff66ff, 0 0 40px #d999ff; }
+    }
+    .timer {
+      font-size: 4em;
+      font-weight: bold;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px #ff33ff, 0 0 20px #b266ff;
+    }
+    .controls { display: flex; gap: 20px; }
+    button {
+      font-size: 1.1em;
+      font-weight: bold;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(45deg, #ff00cc, #b266ff);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+      transition: all 0.2s ease-in-out;
+    }
+    button:hover { transform: scale(1.1); box-shadow: 0 0 25px #ff66ff; }
+    .footer { position: absolute; bottom: 20px; font-size: .9em; opacity: .6; }
+  </style>
+</head>
+<body>
+  <h1>NightQueenBG</h1>
+  <div class="timer" id="display">00:00:00</div>
+  <div class="controls">
+    <button id="start">Başlat</button>
+    <button id="stop">Durdur</button>
+    <button id="reset">Sıfırla</button>
+  </div>
+  <div class="footer">Neon Mor & Neon Pembe Kronometre</div>
+
+  <script>
+    let startTime;
+    let updatedTime;
+    let difference = 0;
+    let tInterval;
+    let running = false;
+
+    const display = document.getElementById('display');
+    const startBtn = document.getElementById('start');
+    const stopBtn = document.getElementById('stop');
+    const resetBtn = document.getElementById('reset');
+
+    function startTimer() {
+      if (!running) {
+        startTime = Date.now() - difference;
+        tInterval = setInterval(updateTimer, 10);
+        running = true;
+      }
+    }
+
+    function stopTimer() {
+      if (running) {
+        clearInterval(tInterval);
+        running = false;
+      }
+    }
+
+    function resetTimer() {
+      clearInterval(tInterval);
+      running = false;
+      difference = 0;
+      display.textContent = '00:00:00';
+    }
+
+    function updateTimer() {
+      updatedTime = Date.now();
+      difference = updatedTime - startTime;
+
+      let minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      let seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      let milliseconds = Math.floor((difference % 1000) / 10);
+
+      minutes = minutes < 10 ? `0${minutes}` : minutes;
+      seconds = seconds < 10 ? `0${seconds}` : seconds;
+      milliseconds = milliseconds < 10 ? `0${milliseconds}` : milliseconds;
+
+      display.textContent = `${minutes}:${seconds}:${milliseconds}`;
+    }
+
+    startBtn.addEventListener('click', startTimer);
+    stopBtn.addEventListener('click', stopTimer);
+    resetBtn.addEventListener('click', resetTimer);
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>
